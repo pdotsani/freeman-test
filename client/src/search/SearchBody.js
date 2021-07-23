@@ -19,7 +19,7 @@ function SearchBody({ location }) {
         setLoading(false);
       })
     })();
-  }, [location.search])
+  }, [location])
   return(
     <div>
       {

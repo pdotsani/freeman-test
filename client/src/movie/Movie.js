@@ -11,7 +11,6 @@ function MovieView({ match }) {
     (async () => {
       await fetch(`/api/movie/${match.params.movieId}`).then(async result => {
         const bodyResponse = await result.json();
-        console.log(bodyResponse)
         setMovieData(bodyResponse);
       })
       .catch((error) => {

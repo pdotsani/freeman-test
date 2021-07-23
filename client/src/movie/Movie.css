@@ -3,6 +3,7 @@
   flex-direction: row;
   min-width: 500px;
   max-width: 80%;
+  margin-top: 10px;
 }
 
 .movie__details {

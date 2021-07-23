@@ -1,0 +1,6 @@
+.movie__container {
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+  max-width: 80%;
+}

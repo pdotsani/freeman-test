@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+
+import './Popular.css';
 
 function Popular() {
   const [loading, setLoading] = useState(false);
@@ -20,11 +23,19 @@ function Popular() {
   return(
     <div>
       { loading ? <div>loading...</div> :
-        popular.map(movie => (
-          <div key={movie.original_title}>
-            {movie.original_title}
-          </div>
-        ))
+        <div className="popular__container">
+          <h2 className="popular__header">Popular Movies</h2>
+          {
+            popular.map(movie => (
+              <Link 
+                key={movie.original_title}
+                className="popular__movie-div" 
+                to={`/movie/${movie.id}`}>
+                  <span className="popular__movie-span">{movie.original_title}</span>
+              </Link>
+            ))
+          }
+        </div>
       }
     </div>
   )

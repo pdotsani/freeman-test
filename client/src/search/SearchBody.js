@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { withRouter, Link } from "react-router-dom";
+
+import './SearchBody.css';
  
 function SearchBody({ location }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -24,11 +26,18 @@ function SearchBody({ location }) {
       {
         loading ? 
         (<div>Loading...</div>) :
-        searchResults.map((movie, idx) => (
-          <Link key={`${movie.original_title}-${idx}`} to={`/movie/${movie.id}`}>
-            {movie.original_title}
-          </Link>
-        ))
+        (<div className="searchbody__container">
+          {
+            searchResults.map((movie, idx) => (
+              <Link 
+                key={`${movie.original_title}-${idx}`}
+                className="searchbody__movie-div"
+                to={`/movie/${movie.id}`}>
+                {movie.original_title}
+              </Link>
+            ))
+          }
+        </div>)
       }
     </div>
   )

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 
+import './Movie.css';
+
 function MovieView({ match }) {
   const [movieData, setMovieData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -24,7 +26,8 @@ function MovieView({ match }) {
     <>
       {
         loading ? (<div>loading...</div>) :
-        (<div>
+        (<div className="movie__container">
+          {movieData.backdrop_path && <img src={`https://image.tmdb.org/t/p/w500${movieData.backdrop_path}`} />}
           <div>{movieData.original_title}</div>
           <div>{movieData.release_date}</div>
           <div>{movieData.overview}</div>

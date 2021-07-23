@@ -7,10 +7,6 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res, next) => {
-
-});
-
 const THE_MOVIE_DB_URL = process.env.THE_MOVIE_DB_URL;
 const apiKeyParam = `api_key=${process.env.THE_MOVIE_DB_API_KEY}`
 

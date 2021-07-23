@@ -11,7 +11,6 @@ function SearchBody({ location }) {
     (async () => {
       await fetch(`/api/movies/search${location.search}`).then(async result => {
         const bodyResponse = await result.json();
-        console.log("search ", bodyResponse);
         setSearchResults(bodyResponse.results);
       })
       .catch((error) => {

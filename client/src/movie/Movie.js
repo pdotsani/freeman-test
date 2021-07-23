@@ -7,12 +7,11 @@ function MovieView({ match }) {
   const [movieData, setMovieData] = useState({});
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    console.log("match ", match.params.movieId);
     setLoading(true);
     (async () => {
       await fetch(`/api/movie/${match.params.movieId}`).then(async result => {
         const bodyResponse = await result.json();
-        console.log("search ", bodyResponse);
+        console.log(bodyResponse)
         setMovieData(bodyResponse);
       })
       .catch((error) => {
@@ -27,10 +26,12 @@ function MovieView({ match }) {
       {
         loading ? (<div>loading...</div>) :
         (<div className="movie__container">
-          {movieData.backdrop_path && <img src={`https://image.tmdb.org/t/p/w500${movieData.backdrop_path}`} />}
-          <div>{movieData.original_title}</div>
-          <div>{movieData.release_date}</div>
-          <div>{movieData.overview}</div>
+          {movieData.poster_path && <img src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} style={{ width: "50%" }} />}
+          <div className="movie__details">
+            <div>{movieData.original_title}</div>
+            <div>{movieData.release_date}</div>
+            <div>{movieData.overview}</div>
+          </div>
         </div>)
       }
     </>
